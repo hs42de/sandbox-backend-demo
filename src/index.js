@@ -1,11 +1,10 @@
+import { routes } from "./routes.js";
+
 const port = Number(Bun.env.PORT ?? 3000);
 
 const server = Bun.serve({
   port,
-  routes: {
-    "/": () => Response.json({ message: "Hello via Bun!" }),
-    "/health": () => Response.json({ status: "ok" }),
-  },
+  routes,
   fetch() {
     return new Response("Not Found", { status: 404 });
   },
